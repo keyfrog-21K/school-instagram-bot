@@ -23,7 +23,7 @@ class drawTextOnBackground:
         width = bbox[2] - bbox[0]
         self.draw.text(((self.W - width) / 2, y), text, font=font, fill=self.fill_color)
 
-    def render(self, output_path="output.png"):
+    def render(self, output_path="output.jpeg"):
         # 제목 높이 계산
         title_bbox = self.draw.textbbox((0, 0), self.title, font=self.title_font)
         title_height = title_bbox[3] - title_bbox[1]
@@ -52,4 +52,5 @@ class drawTextOnBackground:
             current_y += line_height + self.line_spacing
 
         # 이미지 저장
-        self.img.save(output_path)
+        rgb_img = self.img.convert("RGB")
+        rgb_img.save(output_path, "JPEG")
