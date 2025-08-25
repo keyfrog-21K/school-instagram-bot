@@ -17,4 +17,4 @@ class instagramUploader:
         client.login(username=name, password=pw)
 
     def upload(self):
-        client.photo_upload(self.image_path, self.caption)
+        client.photo_upload(self.path, self.caption)
