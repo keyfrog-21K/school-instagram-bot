@@ -18,7 +18,10 @@ class Parser:
             'KEY': api_key,
             'Type': 'json',
             'ATPT_OFCDC_SC_CODE': self.officeCode,
-            'SD_SCHUL_CODE': self.schoolCode
+            'SD_SCHUL_CODE': self.schoolCode,
+            'MLSV_YMD': self.ymd,
+            'pSize': 1,
+            'pIndex': 1
         }
 
     def get_data(self):
