@@ -5,7 +5,7 @@ from datetime import datetime
 from instagram_uploader import instagramUploader
 import os
 
-
+instagram = instagramUploader('output.jpeg', f'오늘의 구미중학교 급식\n@dxeoon')
 def main():
     officeCode = 'R10'  # 경상북도교육청
     schoolCode = '8801139'  # 구미중학교
@@ -24,7 +24,6 @@ def main():
     draw = drawTextOnBackground(background_path, font_path, today.strftime("%Y년 %m월 %d일"), meals)
     draw.render()
 
-    instagram = instagramUploader('output.jpeg', today.strftime("%Y%m%d"))
     instagram.upload()
 
     os.system(f'mv output.jpeg ./archive/output_{today.strftime("%Y%m%d")}.jpeg')
