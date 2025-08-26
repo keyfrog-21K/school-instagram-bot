@@ -4,6 +4,8 @@ from image_generator import drawTextOnBackground
 from datetime import datetime
 from instagram_uploader import instagramUploader
 import os
+from apscheduler.schedulers.blocking import BlockingScheduler
+
 
 instagram = instagramUploader('output.jpeg', f'오늘의 구미중학교 급식\n@dxeoon')
 def main():
@@ -29,5 +31,7 @@ def main():
     os.system(f'mv output.jpeg ./archive/output_{today.strftime("%Y%m%d")}.jpeg')
 
 
-if __name__ == '__main__':
-    main()
+sched = BlockingScheduler()
+sched.add_job(main, 'cron', day_of_week='mon-fri', hour=7, minute=30)
+
+sched.start()
